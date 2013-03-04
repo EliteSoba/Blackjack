@@ -1,0 +1,8 @@
+javac *.java
+java Server
+
+java Application
+-or-
+java Client
+
+for each user/AI to add.

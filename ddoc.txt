@@ -1,0 +1,64 @@
+Purpose:
+	Multiplayer Blackjack. Has a server that managed each round of blackjack and multiple clients that send requests and receive information from the server
+
+Requirements:
+	This project needs a Server that manages game logic and clients that send and receive messages from the server. Also can create AI to play game by emulating client.
+
+Classes:
+	Card:
+		Raw value, and accessor and mutator functions
+	Deck:
+		ArrayList of cards
+		Shuffle() to shuffle
+		toBottom() to essentially draw
+	Player:
+		Name, amount of money, and a ArrayList hand of cards
+		Mutators and Accessors
+	Blackjack:
+		Player hands and dealer hands
+		booleans for locks on code
+		methods to make new games, hit a player, stay a player, double a player, etc.
+		Read the source code for more details
+		Controls ALL the game logic
+	PlayerInfo:
+		Has a player
+		continually displays name and money of that player
+	PlayerPanel:
+		Player, List of Players, PlayerInfo, and Application
+		Allows for choosing player, updating player info, adding new player, quitting game, and everything involved with managing those
+	Game:
+		Socket to connect to server. Booleans to block.
+		Methods to read from and write to server and update the graphics
+		That's pretty much it
+	Application:
+		Allows for conversations between Game and PlayerPanel.
+		That's pretty much it. Has methods to do that.
+	Server:
+		Manages HandleAClients
+		Reads messages from clients and manages the Blackjack object
+		Manages Player database
+	HandleAClient:
+		Connection between a Server and a client. Interprets messages sent in to server and sends out data from clients.
+	Client:
+		AI. Same stuff as Game -gui aspects and player input.
+		Just keeps running, reading in game data, and writing out predetermined commands
+	Drop:
+		Not my code. Link between Server and HandleAClient
+
+Global anything:
+	Not really.
+
+High-level Architecture:
+	Server manages game rules
+	Clients send messages to hit, etc. and receive data from Server
+	AI is a client without any gui or user interaction at all
+
+UI:
+	GUI.
+	Start up Server.
+	Connect up to 3 Game clients or AI clients
+	Press ready for all connected clients
+	play game when the game says it's your turn
+
+Test Cases:
+	Server can handle any combination of players and AIs and bookkeep on its own.
